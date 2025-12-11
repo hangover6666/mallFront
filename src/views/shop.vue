@@ -237,10 +237,10 @@ onMounted(() => {
 }
 
 /* ---------------------------
-   左右布局关键（你缺少这一句）
+   左右布局关键
 ----------------------------*/
 .layout {
-  display: flex;     /* <<<<<<<< 你原来没有！ */
+  display: flex;     
   gap: 24px;
 }
 
@@ -288,7 +288,7 @@ onMounted(() => {
 ----------------------------*/
 .masonry {
   column-count: 4;
-  column-gap: 16px;
+  column-gap: 6px;
 }
 
 /* 响应式 */
@@ -301,8 +301,9 @@ onMounted(() => {
 ----------------------------*/
 .card {
   break-inside: avoid;
-  width: 100%;
-  margin-bottom: 16px;
+  /* width: 100%; */
+  min-width: 220px; /* 下限设宽一点 */
+  margin-bottom: 6px;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -359,11 +360,12 @@ onMounted(() => {
 }
 .sale {
   color: #ff2442;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 }
 .orig {
   color: #999;
+  font-size: 10px;
   text-decoration: line-through;
 }
 .foot {
