@@ -2,31 +2,16 @@
 <template>
   <div class="shop-page">
     <!-- 顶部搜索栏 -->
-    <header class="banner">
-
-      <!-- 左侧：品牌 / 站点名 -->
-      <div class="banner-left">
-        <h1 class="logo">学易圈</h1>
-      </div>
-
-      <!-- 中间：商品搜索框（你要移动到这里的） -->
-      <div class="banner-center">
+    <header class="topbar">
+      <h1 class="title">学易圈</h1>
+      <div class="search">
         <input
           v-model="keyword"
-          class="search-input"
-          placeholder="搜索商品名称"
           @keyup.enter="search"
+          placeholder="搜索商品名称，按 Enter 或点击搜索"
         />
-        <button class="search-btn" @click="search">搜索</button>
+        <button @click="search">搜索</button>
       </div>
-
-      <!-- 右侧：管理员入口 -->
-      <div class="banner-right">
-        <button class="admin-btn" @click="goAdmin">
-          管理员登录
-        </button>
-      </div>
-
     </header>
 
     <!-- 主布局：左侧导航 + 右侧瀑布流 -->
@@ -74,7 +59,7 @@
             <div class="card-thumb">
               <img
                 v-if="item.singlePic && item.singlePic.length > 0"
-                :src="BASE_URL +'/'+ item.singlePic[0].productimageSrc"
+                :src="BASE_URL + item.singlePic[0].productimageSrc"
                 :alt="item.productName"
                 class="product-img"
                 loading="lazy"
@@ -119,7 +104,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { GetProductListAPI, BASE_URL } from "@/request/request.js";
-import { ADMIN_SYSTEM_URL } from "@/config/urls";
 
 // 默认激活“发现”
 const activeMenu = ref("discover");
@@ -202,14 +186,6 @@ function search() {
   fetchProducts({ pageNum: 1, productName: keyword.value });
 }
 
-// -------------------------
-// 管理员入口跳转（新增）2025-12.17
-// -------------------------
-const goAdmin = () => {
-  // 企业做法：直接跳转到后台系统
-  window.open(ADMIN_SYSTEM_URL, "_blank");
-};
-
 // 首次加载
 onMounted(() => {
   fetchProducts();
@@ -229,7 +205,11 @@ onMounted(() => {
 /* ---------------------------
    顶部搜索栏
 ----------------------------*/
-
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
 .title {
   font-size: 22px;
   font-weight: 700;
@@ -356,7 +336,7 @@ onMounted(() => {
 
 /* 文字区 */
 .card-body {
-  padding: 1px 8px;
+  padding: 12px 14px;
 }
 .pname {
   font-size: 14px;
@@ -366,7 +346,7 @@ onMounted(() => {
 .ptitle {
   font-size: 9px;
   color: #666;
-  /* margin-bottom: 6px; */
+  margin-bottom: 6px;
 }
 .stock{
   font-size: 10px;
@@ -415,78 +395,5 @@ onMounted(() => {
   text-align: center;
   margin-top: 20px;
   color: #666;
-}
-
-/* =========================
-   顶部横幅 Banner
-   修改日期：2025年12月17日19:51:23
-   ========================= */
-.banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px;
-
-  /* 温和红色系 */
-  background: linear-gradient(90deg, #f7ecec, #fdf5f5);
-
-  border-radius: 12px;
-  margin-bottom: 16px;
-}
-
-/* 左侧品牌 */
-.banner-left .logo {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* 中间搜索 */
-.banner-center {
-  display: flex;
-  gap: 8px;
-  flex: 1;
-  justify-content: center;
-}
-
-.search-input {
-  width: 320px;
-  height: 36px;
-  border-radius: 18px;
-  border: 1px solid #e3cfcf;
-  padding: 0 14px;
-}
-
-.search-btn {
-  height: 36px;
-  padding: 0 16px;
-  border-radius: 18px;
-  border: none;
-  background: #fff;
-  cursor: pointer;
-}
-
-/* 右侧管理员入口 */
-.admin-btn {
-  background: #ffffff;
-  border: 1px solid #e4c2c2;
-  color: #333;
-  border-radius: 18px;
-  padding: 6px 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-/* hover 状态 */
-.admin-btn:hover {
-  background: #ff2442;          /* 浅红色，不刺眼 */
-  color: #fff;
-  font-weight:bolder ;
-  border-color: #ffb3be;
-  transform: translateY(-2px);
-}
-.admin-btn.active {
-  background: #ff2442;
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(255,36,66,.35);
 }
 </style>
