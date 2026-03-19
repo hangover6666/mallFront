@@ -1,0 +1,55 @@
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 320px;
+  padding: 30px;
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #ff2442;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #222;
+  color: #fff;
+}
+
+.captcha-box {
+  display: flex;
+  gap: 10px;
+}
+
+.captcha-box img {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #ff2442;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+

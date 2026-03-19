@@ -3,7 +3,7 @@
   <div class="shop-page">
     <!-- 顶部搜索栏 -->
     <header class="topbar">
-      <h1 class="title">学易圈</h1>
+      <h1 class="title">邝码</h1>
       <div class="search">
         <input
           v-model="keyword"

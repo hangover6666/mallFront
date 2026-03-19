@@ -10,7 +10,7 @@
 import instance from "./axios";
 import { API_BASE_URL } from "@/config/urls";
 
-// 你之前的 BASE_URL 可以升级成 API_BASE_URL
+// 之前的 BASE_URL 可以升级成 API_BASE_URL。详情看/urls.js
 export const BASE_URL = API_BASE_URL;
 
 // 商品列表接口

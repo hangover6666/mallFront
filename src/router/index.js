@@ -7,8 +7,14 @@ const router = createRouter({
     {
       path: '/',               // 首页 '/'
       name: 'shop',
-      component: ShopView      // ⭐ 首页展示 shop.vue
+      component: ShopView      // 首页展示 shop.vue
     },
+
+
+    {
+      path: '/productDetail',
+      component: () => import('@/views/productDetail.vue')
+    }
 
    
   ],

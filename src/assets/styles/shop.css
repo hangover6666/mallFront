@@ -1,0 +1,323 @@
+
+/* ---------------------------
+   总体页面背景
+----------------------------*/
+.shop-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 30px;
+}
+
+/* ---------------------------
+   顶部搜索栏
+----------------------------*/
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.search {
+  /* display: flex; */
+  gap: 8px;
+}
+
+.search input {
+  width: 320px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.search button {
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------------------------
+   左右布局关键
+----------------------------*/
+.layout {
+  display: flex;
+  gap: 24px;
+}
+
+/* ---------------------------
+   左侧导航栏（小红书风）
+----------------------------*/
+.sidebar {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 20px;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 14px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.menu-btn:hover {
+  transform: translateY(-2px);
+}
+
+.menu-btn.active {
+  background: #ff2442;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(255, 36, 66, .35);
+}
+
+/* ---------------------------
+   右侧内容区
+----------------------------*/
+.content {
+  flex: 1;
+}
+
+/* ---------------------------
+   瀑布流布局
+----------------------------*/
+.masonry {
+  column-count: 4;
+  column-gap: 6px;
+}
+
+/* 响应式 */
+@media (max-width: 1100px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+
+/* ---------------------------
+   商品卡片
+----------------------------*/
+.card {
+  break-inside: avoid;
+  /* width: 100%; */
+  min-width: 220px;
+  /* 下限设宽一点 */
+  margin-bottom: 6px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: .15s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* 图片区域（等比缩放，不裁切） */
+.card-thumb {
+  width: 100%;
+  background: #fff;
+}
+
+.product-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* 不裁切 */
+  border-radius: 7%;
+  background: #fff;
+  padding: 4px;
+}
+
+.img-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #f9f9f9;
+}
+
+/* 文字区 */
+.card-body {
+  padding: 1px 8px;
+}
+
+.pname {
+  font-size: 14px;
+  height: 1.5em;
+  overflow: hidden;
+}
+
+.ptitle {
+  font-size: 12px;
+  color: #666;
+  /* margin-bottom: 6px; */
+}
+
+.stock {
+  font-size: 10px;
+  color: #666;
+  /* display: flex; */
+  /* justify-content:space-around; */
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sale {
+  color: #ff2442;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.orig {
+  color: #999;
+  font-size: 10px;
+  text-decoration: line-through;
+}
+
+.foot {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* 分页 */
+.pager {
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pager button {
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 无数据提示 */
+.empty {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+/* =========================
+   顶部横幅 Banner
+   修改日期：2025年12月17日19:51:23
+   ========================= */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 30px;
+
+  /* 温和红色系 */
+  background: linear-gradient(90deg, #f74040, #d06464);
+
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+/* 左侧品牌 */
+.banner-left .logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 中间搜索 */
+.banner-center {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.search-input {
+  width: 520px;
+  height: 36px;
+  border-radius: 18px;
+  border: 1px solid #e3cfcf;
+  padding: 0 14px;
+}
+
+.search-btn {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* 右侧管理员入口 */
+.admin-btn {
+  background: #ffffff;
+  border: 1px solid #e4c2c2;
+  color: #333;
+  border-radius: 18px;
+  padding: 6px 14px;
+  /* cursor: pointer; */
+  transition: all 0.2s ease;
+}
+
+/* hover 状态 */
+.admin-btn:hover {
+  background: #ff2442;
+  /* 浅红色，不刺眼 */
+  color: #fff;
+  font-weight: bolder;
+  border-color: #ffb3be;
+  transform: translateY(-2px);
+}
+
+.admin-btn.active {
+  background: #ff2442;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(255, 36, 66, .35);
+}
+
+/* 登录按钮 */
+.login-btn {
+  background: #111;
+  color: #fff;
+  border: 1px solid #ff2442;
+  padding: 6px 16px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.login-btn:hover {
+  background: #ff2442;
+  box-shadow: 0 0 10px rgba(255,36,66,0.6);
+}
