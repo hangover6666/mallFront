@@ -9,6 +9,7 @@
 
 import instance from "./axios";
 import { API_BASE_URL } from "@/config/urls";
+import axios from 'axios'
 
 // 之前的 BASE_URL 可以升级成 API_BASE_URL。详情看/urls.js
 export const BASE_URL = API_BASE_URL;
@@ -16,4 +17,14 @@ export const BASE_URL = API_BASE_URL;
 // 商品列表接口
 export const GetProductListAPI = (params) => {
   return instance.get("/product/list", { params });
+};
+
+
+// 退出登录
+export const LogoutAPI = () => {
+  return axios.get(`${BASE_URL}/logout`, {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
 };

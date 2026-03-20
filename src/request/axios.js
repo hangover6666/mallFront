@@ -21,25 +21,6 @@ const service = axios.create({
 
 
 
-// 响应拦截器（统一处理响应）
-// service.interceptors.response.use(
-//   (response) => {
-//     // 假设后端返回结构为 { code, message, data }
-//     const res = response.data;
-//     if (res && res.code && res.code !== 200) {
-//       // 非业务成功，reject 并在页面处理错误信息
-//       return Promise.reject(new Error(res.message || "Error"));
-//     }
-//     // 成功直接返回 data（如果没有 code 字段，返回整个 res）
-//     return res && res.data !== undefined ? res.data : res;
-//   },
-//   (error) => {
-//     // 网络错误或非 2xx
-//     // 这里可以统一返回一个格式化错误
-//     const message = error.response?.data?.message || error.message || "Network Error";
-//     return Promise.reject(new Error(message));
-//   }
-// );
 
 
 
@@ -49,7 +30,7 @@ service.interceptors.request.use(config => {
   const token = getToken()
 
   if (token) {
-    // ⭐ 改成 Authorization（和后端一致）
+    //  改成 Authorization（和后端一致）
     config.headers["Authorization"] = token
   }
 
@@ -65,6 +46,7 @@ service.interceptors.response.use(
     // ❌ 业务错误（例如：验证码错误）
     if (res && res.code && res.code !== 200) {
       return Promise.reject(new Error(res.message || "Error"))
+
     }
 
     return res && res.data !== undefined ? res.data : res

@@ -1,39 +1,8 @@
 <!-- src/views/shop.vue -->
 <template>
   <div class="shop-page">
-    <!-- 顶部搜索栏 -->
-    <header class="banner">
-
-      <!-- 左侧：品牌 / 站点名 -->
-      <div class="banner-left">
-        <h1 class="logo">邝码</h1>
-      </div>
-
-      <!-- 中间：商品搜索框（你要移动到这里的） -->
-      <div class="banner-center">
-        <input v-model="keyword" class="search-input" placeholder="搜索商品名称" @keyup.enter="search" />
-        <button class="search-btn" @click="search">搜索</button>
-      </div>
-
-      <!-- 右侧：用户+管理员入口 -->
-      <div class="banner-right">
-
-        <LoginDialog v-if="showLogin" @close="showLogin = false" @success="handleLoginSuccess" />
-        <!-- 未登录 -->
-        <button v-if="!isLogin" @click="showLogin = true" class="login-btn">
-          登录
-        </button>
-        <!-- 已登录 -->
-        <div v-else class="user-box" >
-          <span class="username">{{ username }}已登录</span>
-          <button @click="logout" class="login-btn">退出</button>
-        </div>
-        <button class="admin-btn" @click="goAdmin">
-          管理员登录
-        </button>
-      </div>
-
-    </header>
+    <!-- 顶部搜索栏   转移到了layout --> 
+    
 
     <!-- 主布局：左侧导航 + 右侧瀑布流 -->
     <main class="layout">
@@ -104,20 +73,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { GetProductListAPI, BASE_URL } from "@/request/request.js";
+import { ref, onMounted,watch } from "vue";
+import { GetProductListAPI ,BASE_URL } from "@/request/request.js";
 import { ADMIN_SYSTEM_URL } from "@/config/urls";
 import { useRouter } from 'vue-router'  //  引入的是“钩子函数”，不是 router 文件
-import LoginDialog from "@/components/LoginDialog.vue" //引入登录模块
 import { getToken, removeToken } from "@/utils/auth"
 
 
 // 默认激活“发现”
 const activeMenu = ref("discover");
 //默认未登录
-const showLogin = ref(false)
 const router = useRouter()  //获取路由实例
-const isLogin = ref(false)
+
 
 
 
@@ -133,28 +100,6 @@ const pages = ref(1);
 // 搜索关键字
 const keyword = ref("");
 
-//检查是否登录
-const checkLogin = () => {
-  if (!isLogin.value) {
-    showLogin.value = true
-    return false
-  }
-  return true
-}
-
-const handleLoginSuccess = () => {
-  isLogin.value = true
-}
-
-
-onMounted(() => {
-  isLogin.value = !!getToken()
-})
-
-const logout = () => {
-  removeToken()
-  isLogin.value = false
-}
 
 // 处理后端响应结构
 function handleListResponse(res) {
@@ -239,10 +184,28 @@ const goAdmin = () => {
   window.open(ADMIN_SYSTEM_URL, "_blank");
 };
 
+// onMounted(() => {
+//   fetchProducts({
+//     productName: route.query.keyword || ""
+//   })
+// })
+
+
 // 首次加载
 onMounted(() => {
   fetchProducts();
 });
+
+//下面这段代码，如果不注释，
+watch(
+  () => router.keyword,
+  (newKeyword) => {
+    fetchProducts({ productName: newKeyword || "" });
+  });
+
+
+
+
 </script>
 
 <style src="@/assets/styles/shop.css"></style>

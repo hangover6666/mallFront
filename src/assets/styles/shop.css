@@ -5,7 +5,7 @@
 .shop-page {
   min-height: 100vh;
   background: #f5f6f8;
-  padding: 30px;
+  padding: 16px;
 }
 
 /* ---------------------------
@@ -19,21 +19,21 @@
 }
 
 .search {
-  /* display: flex; */
+  display: flex;
   gap: 8px;
 }
 
 .search input {
   width: 320px;
-  height: 36px;
-  padding: 0 12px;
+  height: 16px;
+  padding: 0 15px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background: #fff;
 }
 
 .search button {
-  padding: 0 16px;
+  padding: 0 1px;
   border-radius: 8px;
   background: #fff;
   border: none;
@@ -238,17 +238,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 30px;
+  padding: 10px 25px;
 
   /* 温和红色系 */
   background: linear-gradient(90deg, #f74040, #d06464);
 
   border-radius: 12px;
-  margin-bottom: 16px;
+  
 }
 
 /* 左侧品牌 */
 .banner-left .logo {
+  cursor: pointer;
   margin: 0;
   font-size: 20px;
   font-weight: 600;
